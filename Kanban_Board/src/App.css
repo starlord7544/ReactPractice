@@ -1,0 +1,62 @@
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.Board {
+    border: 1px solid;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 30px 10px;
+    height: 90dvh;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.Stage {
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-width: 500px;
+    width: 300px;
+}
+
+.Item {
+    border: 1px solid;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%;
+}
+
+hr {
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 10px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+input {
+    background-color: rgb(72, 72, 72);
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    max-width: 200px;
+    margin: 10px;
+}
+
+input:focus {
+    outline: none;
+}
