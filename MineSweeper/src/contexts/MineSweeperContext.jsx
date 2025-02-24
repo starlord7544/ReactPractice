@@ -21,6 +21,7 @@ const MyContextProvider = ({ children }) => {
     const [isTimer, setIsTimer] = useState(true)
     const [isWon, setIsWon] = useState(false)
     const [revealMines, setRevealMines] = useState(false)
+    const [visitedArr, setVisitedArr] = useState(Array(64).fill(false))
 
     const handleTileClick = (idx) => {
         if (gameOver || isWon)
@@ -40,9 +41,11 @@ const MyContextProvider = ({ children }) => {
         const newBoard = [...boardArr]
         const val = cntMines(idx, newBoard)
         newBoard[idx] = val;
+        const newVisitedArr = [...visitedArr]
+        newVisitedArr[idx] = true
 
         if (val === 0)
-            revealEmptyTiles(newBoard, idx)
+            revealEmptyTiles(newBoard, idx, newVisitedArr)
 
         if (checkWin(newBoard)) {
             setIsWon(true)
@@ -50,6 +53,7 @@ const MyContextProvider = ({ children }) => {
             setRevealMines(true)
         }
 
+        setVisitedArr(newVisitedArr)
         setBoardArr(newBoard)
     }
 
@@ -81,7 +85,7 @@ const MyContextProvider = ({ children }) => {
         return cnt
     }
 
-    const revealEmptyTiles = (newBoard, idx) => {
+    const revealEmptyTiles = (newBoard, idx, newVisitedArr) => {
 
         const row = Math.floor(idx / 8)
         const col = idx % 8
@@ -101,9 +105,10 @@ const MyContextProvider = ({ children }) => {
                 if (newBoard[newIdx] === null) {
                     const val = cntMines(newIdx, newBoard)
                     newBoard[newIdx] = val
+                    newVisitedArr[newIdx] = true
 
                     if (val === 0)
-                        revealEmptyTiles(newBoard, newIdx)
+                        revealEmptyTiles(newBoard, newIdx, newVisitedArr)
                 }
             }
         }
@@ -116,6 +121,7 @@ const MyContextProvider = ({ children }) => {
         setIsTimer(true)
         setIsWon(false)
         setRevealMines(false)
+        setVisitedArr(Array(64).fill(false))
     }
 
     const getTime = () => {
@@ -141,7 +147,9 @@ const MyContextProvider = ({ children }) => {
         revealMines,
         setRevealMines,
         handleTileClick,
-        resetGame
+        resetGame,
+        visitedArr,
+        setVisitedArr,
     }
 
     const value = {
@@ -153,9 +161,9 @@ const MyContextProvider = ({ children }) => {
         setSeconds,
         isTimer,
         getTime,
-        boardArr,
         handleTileClick,
-        revealMines
+        revealMines,
+        visitedArr,
     }
 
     return (
