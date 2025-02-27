@@ -18,10 +18,7 @@ const ClockContextProvider = ({ children }) => {
         let hours = newTime.getHours()
         const mins = newTime.getMinutes().toString().padStart(2, '0')
         const secs = newTime.getSeconds().toString().padStart(2, '0')
-
-        if (hours > 12)
-            hours = hours%12
-        
+        hours = hours%12 || 12
         hours = hours.toString().toString().padStart(2, '0')
 
         return `${hours} : ${mins} : ${secs}`

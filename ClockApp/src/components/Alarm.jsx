@@ -12,7 +12,7 @@ const Alarm = () => {
                         value={alarmTitle}
                         onChange={(e) => setAlarmTitle(e.target.value)}
                         required={true}
-                        placeholder='Enter Alarm title'
+                        placeholder='Add Alarm title'
                         className='alarmTitleInput'
                         />
                     <input
