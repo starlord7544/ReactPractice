@@ -14,6 +14,10 @@ body {
     background-attachment: fixed;
 }
 
+* {
+    transition: 500ms all ease-in-out;
+}
+
 /* .alarmELe {
     display: flex;
     width: 235px;
@@ -68,7 +72,9 @@ body {
 }
 
 /* -------------------- COMMON STYLES FOR CLOCK, TIMER, STOPWATCH -------------------- */
-.clock, .timer, .stopWatch {
+.clock,
+.timer,
+.stopWatch {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -84,7 +90,9 @@ body {
 }
 
 /* Time Display */
-.clockTime, .timerTime, .watchTime {
+.clockTime,
+.timerTime,
+.watchTime {
     font-size: 3rem;
     font-weight: 600;
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
@@ -93,12 +101,16 @@ body {
 }
 
 /* Buttons */
-.clockBtns, .timerBtns, .stopwatchBtns {
+.clockBtns,
+.timerBtns,
+.stopwatchBtns {
     display: flex;
     gap: 15px;
 }
 
-.clockBtns button, .timerBtns button, .stopwatchBtns button {
+.clockBtns button,
+.timerBtns button,
+.stopwatchBtns button {
     background: rgba(255, 255, 255, 0.2);
     border: none;
     padding: 10px 20px;
@@ -110,7 +122,9 @@ body {
     transition: 0.3s;
 }
 
-.clockBtns button:hover, .timerBtns button:hover, .stopwatchBtns button:hover {
+.clockBtns button:hover,
+.timerBtns button:hover,
+.stopwatchBtns button:hover {
     background: rgba(255, 255, 255, 0.3);
     transform: scale(1.05);
 }
@@ -178,6 +192,7 @@ body {
     width: 355px;
 }
 
+
 /* Alarm Form */
 .alarmInput {
     display: flex;
@@ -237,8 +252,9 @@ body {
     flex-direction: column;
     gap: 10px;
     width: 100%;
-    max-height: 200px;
+    max-height: 220px;
     overflow-y: auto;
+    border-radius: 5px;
 }
 
 /* Individual Alarm Element */
@@ -271,29 +287,45 @@ body {
 
 /* Delete Button */
 .deleteBtn {
-    background: rgba(255, 0, 0, 0.7);
     color: white;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 0.9rem;
     transition: 0.3s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.deleteBtn img {
+    width: 100%;
+    transform: scale(1.2);
 }
 
 .deleteBtn:hover {
-    background: rgba(255, 0, 0, 1);
+    /* background: rgba(255, 255, 255, 0.2); */
     transform: scale(1.1);
 }
 
 
 /* -------------------- MEDIA QUERIES -------------------- */
 @media (max-width: 600px) {
-    .clock, .timer, .stopWatch, .alarm {
+
+    .clock,
+    .timer,
+    .stopWatch,
+    .alarm {
         min-width: 280px;
         padding: 30px;
+        transform: scale(0.8);
     }
 
-    .clockTime, .timerTime, .watchTime {
+    .clockTime,
+    .timerTime,
+    .watchTime {
         font-size: 2.5rem;
     }
 
@@ -310,16 +342,16 @@ body {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
     }
-    
+
     .inputContainer input {
         width: 200px;
         font-size: 0.9rem;
     }
-    
+
     .alarmELe {
         padding: 8px 12px;
     }
-    
+
     .deleteBtn {
         padding: 4px 8px;
         font-size: 0.8rem;

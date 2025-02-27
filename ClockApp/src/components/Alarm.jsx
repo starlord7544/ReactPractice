@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { AlarmContext } from '../contexts'
+import Delete from'../assets/Delete.svg'
 
 const Alarm = () => {
     const { alarmArr, alarmTime, setAlarmTime, handleSubmit, deleteAlarm, alarmTitle, setAlarmTitle } = useContext(AlarmContext)
@@ -40,7 +41,7 @@ const Alarm = () => {
                                     className="deleteBtn"
                                     onClick={() => deleteAlarm(idx)}
                                 >
-                                    del
+                                    <img src={Delete} alt="del34"/>
                                 </div>
                             </div>
                         )
