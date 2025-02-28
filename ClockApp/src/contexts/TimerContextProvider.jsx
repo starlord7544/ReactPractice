@@ -55,7 +55,7 @@ const TimerContextProvider = ({ children }) => {
         const totalSecs = getSecs(Number(timerHours), Number(timerMins), Number(timerSecs))
         if (totalSecs <= 0)
             return
-        setTimeLeft(totalSecs)
+        setTimeLeft(Number(totalSecs))
         setIsTimerRunning(true)
         // setTimerHours(0)
         // setTimerMins(0)
