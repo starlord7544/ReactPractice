@@ -1,6 +1,6 @@
 :root {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-image: url('./assets/particlesjs.gif');
+    background: url('./assets/particlesjs.gif');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
