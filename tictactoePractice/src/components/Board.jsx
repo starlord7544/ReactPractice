@@ -4,7 +4,7 @@ import Circle from '../assets/Circle.svg'
 
 const Board = ({ boardArr, setBoardArr, turn, setTurn, setDraw, winner, setWinner }) => {
     const winPatterns = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
-
+    const [winPat, setWinPat] = useState([])
     const checkDraw = (newBoard) => {
         return newBoard.every(cell => cell !== null)
     }
@@ -12,8 +12,10 @@ const Board = ({ boardArr, setBoardArr, turn, setTurn, setDraw, winner, setWinne
     const checkWin = (newBoard) => {
         for (let i = 0; i < winPatterns.length; i++) {
             let [a, b, c] = winPatterns[i]
-            if (newBoard[a] === newBoard[b] && newBoard[b] === newBoard[c] && newBoard[a] !== null)
+            if (newBoard[a] === newBoard[b] && newBoard[b] === newBoard[c] && newBoard[a] !== null) {
+                setWinPat(winPatterns[i])
                 return newBoard[a]
+            }
         }
         return null
     }
@@ -37,6 +39,11 @@ const Board = ({ boardArr, setBoardArr, turn, setTurn, setDraw, winner, setWinne
 
     const giveBorder = (idx) => {
         let str = 'cell'
+        if (winPat.length !== 0) {
+            for (let i = 0; i < winPat.length; i++)
+                if (winPat[i] === idx)
+                    str += ' win'
+        }
         if (idx === 0 || idx === 1 || idx === 2)
             str += ' top'
         if (idx === 6 || idx === 7 || idx === 8)
